@@ -1,0 +1,75 @@
+/* ---------- Hero, scrolled (version 2) ----------
+   The first screen is sky: a dusk gradient laid above the film so there is more of it. The band
+   (mark, line, menu, apply) sits over it in the middle. Scrolling pans the whole world up to the
+   villa and plays the film's lights on with the scroll. The band rides up and docks as the bar.
+   Default (no script, reduced motion): the film alone, as before. */
+:root { --hx-sky: 62svh; }
+@supports not (height: 1svh) { :root { --hx-sky: 62vh; } }
+
+.hx__world { position: absolute; left: 0; right: 0; top: 0; height: calc(100vh + var(--hx-sky)); height: calc(100svh + var(--hx-sky)); transform: translate3d(0, calc(-1 * var(--hx-sky)), 0); will-change: transform; }
+.hx__sky { height: var(--hx-sky); background: linear-gradient(180deg, #081330 0%, #0a1733 40%, #0c1a34 75%, #0d1c35 100%); }
+.hx__sky { position: relative; }
+/* the sky carries on, flat, behind the top of the film, and the film fades in over it: no seam */
+.hx__sky::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 50vh; height: 50svh; background: #0d1c35; }
+.hx__film { display: block; position: relative; width: 100%; height: 100vh; height: 100svh; object-fit: cover; object-position: 50% 50%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%); }
+
+.hx--live { height: calc(100vh * 3); height: calc(100svh * 3); }
+.hx--live .mxpanel { position: sticky; top: 0; }
+.hx--live .hx__world { transform: translate3d(0, 0, 0); }
+.hx--live .hx__film { animation: none; }
+
+/* the band: it rests in the middle of the sky, rises with the first scroll and docks at the top.
+   No dark block behind it while it sits in the sky; a soft top fade comes in only as it docks. */
+.hx--live .mxband { top: 0; margin-top: calc(50vh - var(--mx-h) / 2); margin-top: calc(50svh - var(--mx-h) / 2); }
+.hx--live .mxband::before { top: 0; bottom: -70px; background: linear-gradient(180deg, rgba(8, 19, 48, 0.78) 0%, rgba(8, 19, 48, 0.42) 55%, rgba(8, 19, 48, 0) 100%); opacity: var(--dock, 0); }
+
+/* ---------- The name behind the villa (version 12) ----------
+   The logo's own lettering (the same drawn wordmark as in the bar), set huge and faint across the sky above
+   the house. It is invisible while the lights come on; while the film is still finishing it rises slowly out
+   of the dusk: a long fade, a soft de-blur and a small lift. */
+.hx__word { position: absolute; left: 0; right: 0; top: calc(var(--hx-sky) + 9svh); height: 40svh; z-index: 1; display: flex; align-items: flex-start; justify-content: center; pointer-events: none; overflow: visible; }
+@supports not (height: 1svh) { .hx__word { top: calc(var(--hx-sky) + 9vh); height: 40vh; } }
+.hx__word span { display: block; width: 93vw; color: rgba(237, 231, 219, 0.2);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%); }
+.hx__word .lx-logo { width: 100%; height: auto; }
+/* with the script running, the name waits unseen until the film is nearly done */
+.hx--live .hx__word span { opacity: 0; filter: blur(14px); transform: translate3d(0, 2.2vh, 0) scale(0.985);
+    transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease; }
+.hx--live.hx-word .hx__word span { opacity: 1; filter: blur(0); transform: none;
+    transition: opacity 3.4s cubic-bezier(0.22, 0.61, 0.36, 1), filter 3.4s cubic-bezier(0.22, 0.61, 0.36, 1), transform 3.8s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* ---------- The header (version 14): the logo, the line in the middle, Apply ----------
+   No menu and no links in the band. The line sits centred between the logo and Apply, and is rubbed out as
+   you scroll (--dock goes 0 to 1 as the band rises to the top and becomes the bar). */
+.mxband .mxtag { grid-column: 4 / span 6; justify-self: center; max-width: 34ch; text-align: center; font-size: clamp(16px, 1.45vw, 21px); }
+.hx--live .mxband .mxtag { opacity: max(0, calc(1 - var(--dock, 0) * 1.6)); transform: translate3d(0, calc(var(--dock, 0) * -12px), 0); filter: blur(calc(var(--dock, 0) * 4px)); }
+.mxbar .mxapply, .mxband .mxapply { grid-column: 10 / span 3; }
+@media (max-width: 767px) { .mxband .mxtag { display: none; } }
+
+/* ---------- The opening line in script (version 16) ----------
+   The line in the middle of the first screen is set in Monsieur La Doulaise, the same signature script the
+   site already uses for "the table", "the private room" and the like. A script has a small body, so it is
+   set larger than the sans/serif line it replaces. */
+.mxband .mxtag { font-family: var(--script); font-weight: 400; font-style: normal; letter-spacing: 0; line-height: 1; font-size: clamp(38px, 3.9vw, 64px); max-width: 24ch; }
+.hx--live .mxband .mxtag { transform: translate3d(0, calc(var(--dock, 0) * -14px), 0); }
+/* one line, with room to breathe between the logo and Apply */
+.mxband .mxtag { grid-column: 3 / span 8; max-width: none; white-space: nowrap; font-size: clamp(36px, 3.6vw, 60px); }
+.mxband .mxtag .mxap { display: inline-block; margin: 0 -0.3em 0 -0.22em; }
+/* logo, line and Apply all on the one row; the line is centred across the whole width, not between the others */
+.mxband > .mxmark, .mxband > .mxtag, .mxband > .mxapply { grid-row: 1; }
+.mxband .mxtag { grid-column: 1 / -1; justify-self: center; align-self: center; pointer-events: none; }
+.mxband > .mxmark, .mxband > .mxapply { position: relative; z-index: 1; }
+.mxband .mxapply { grid-column: 11 / span 2; justify-self: end; align-self: center; }
+
+/* ---------- The caption on the second film, in script (version 17) ----------
+   "Everything arranged. Nothing announced." is set in Monsieur La Doulaise, the same signature script as the
+   line at the top of the page, larger because a script has a small body. */
+.mxcap__line { font-family: var(--script); font-style: normal; font-weight: 400; font-size: clamp(40px, 4.2vw, 72px); line-height: 1; letter-spacing: 0; }
+@media (max-width: 767px) { .mxcap__line { font-size: clamp(34px, 9vw, 48px); } }
+
+/* ---------- The second film holds the screen (version 19) ----------
+   "Time slows down for those who stay." The film stays pinned for two screens of scrolling once the villa has
+   lifted away, so the visitor can stop and watch before the page moves on. The number is the panel's height
+   in screens minus two: 5 holds three screens, 4 holds two, 3 holds one. */
+.mxpanel--two { height: calc(4 * var(--screen)); }

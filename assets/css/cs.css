@@ -1,0 +1,23 @@
+/* Version 42: the concierge. One picture opens, splits into slivers, widens into a row that scrolls sideways. */
+.cs{position:relative;height:940vh;background:#050505;color:#eee8dc}
+.cs__stick{position:sticky;top:0;height:100vh;overflow:hidden}
+.cs__row{position:absolute;left:0;top:50%;height:64vh;margin-top:-32vh;display:flex;align-items:stretch;justify-content:flex-start;gap:.7vw;width:max-content;will-change:transform}
+.cs__card{position:relative;flex:none;margin:0;height:100%;width:24vw;overflow:hidden;background:#111}
+.cs__card img{position:absolute;top:0;left:50%;height:100%;width:24vw;max-width:none;object-fit:cover;transform:translateX(-50%);filter:brightness(.92) saturate(.96)}
+.cs__card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,0) 52%,rgba(5,5,5,.82) 100%);pointer-events:none}
+.cs__cap{position:absolute;z-index:2;left:1.1vw;right:1.1vw;bottom:2.2vh;display:grid;grid-template-columns:1fr;align-items:baseline;opacity:0;white-space:normal}
+.cs__no{font-size:12px;letter-spacing:.2em;color:#c9a24a}
+.cs__name{font-size:clamp(13px,1.1vw,18px);letter-spacing:.16em;text-transform:uppercase}
+.cs__desc{margin-top:.5vh;font-size:clamp(12px,.95vw,15px);color:rgba(238,232,220,.72);line-height:1.4}
+@media (max-width:860px){
+  .cs{height:800vh}
+  .cs__row{height:58vh;margin-top:-29vh}
+  .cs__card,.cs__card img{width:56vw}
+  .cs__cap{left:3.5vw;right:3.5vw}
+  .cs__name{font-size:12px;letter-spacing:.1em}
+  .cs__desc{font-size:12px}
+}
+/* version 61: the film plays over the picture while the pointer is on the card */
+.cs__card video{position:absolute;top:0;left:50%;height:100%;width:24vw;max-width:none;object-fit:cover;transform:translateX(-50%);opacity:0;transition:opacity .5s ease;pointer-events:none;filter:brightness(.95) saturate(.98)}
+.cs__card.is-hv video{opacity:1}
+@media (max-width:860px){.cs__card video{width:56vw}}

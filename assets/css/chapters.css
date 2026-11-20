@@ -1,0 +1,85 @@
+/* Version 23: the chapters, the circle and the sound switch. Dark ground, ivory words, no red, no gold. */
+.chs{background:#0a0a0a;position:relative}
+.chs__head{padding:clamp(90px,16vh,200px) 6vw clamp(40px,8vh,100px);max-width:1500px;margin:0 auto}
+.chs__eyebrow{color:rgba(238,232,220,.55);letter-spacing:.32em;margin:0 0 22px}
+.chs__title{font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(40px,6.4vw,112px);line-height:1.02;color:#eee8dc;margin:0;max-width:16ch}
+
+.ch{position:relative;height:240vh}
+.ch__stick{position:sticky;top:0;height:100vh;overflow:hidden;background:#050505}
+.ch__media{position:absolute;inset:0;margin:0;transform:scale(calc(1.16 - var(--p,0) * .16));will-change:transform}
+.ch__media img,.ch__media video,.ch__video{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.82) saturate(.9)}
+.ch__shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(5,5,5,.55) 0%,rgba(5,5,5,0) 22%,rgba(5,5,5,.15) 38%,rgba(5,5,5,.92) 100%),
+             linear-gradient(90deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,0) 55%)}
+.ch__text{position:absolute;left:6vw;bottom:clamp(60px,12vh,150px);max-width:min(720px,86vw);color:#eee8dc;
+  opacity:var(--t,0);transform:translateY(calc((1 - var(--t,0)) * 34px))}
+.ch__where{display:flex;align-items:center;gap:18px;margin:0 0 20px;color:rgba(238,232,220,.7)}
+.ch__no{font-family:var(--serif,serif);font-size:15px;letter-spacing:.14em;color:rgba(238,232,220,.5)}
+.ch__name{font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(54px,9vw,150px);line-height:.95;margin:0 0 22px;letter-spacing:-.01em}
+.ch__line{font-family:var(--script,serif);font-size:clamp(34px,3.6vw,60px);line-height:1.1;margin:0 0 30px;color:rgba(238,232,220,.92)}
+.ch__index{position:absolute;right:6vw;bottom:clamp(60px,12vh,150px);margin:0;color:rgba(238,232,220,.45);letter-spacing:.3em;opacity:var(--t,0)}
+
+/* The circle: a split screen */
+.circ{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:#0a0a0a;color:#eee8dc}
+.circ__pic{margin:0;position:relative;overflow:hidden;min-height:60vh}
+.circ__pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.85)}
+.circ__text{display:flex;flex-direction:column;justify-content:center;padding:12vh 6vw 18vh 5.5vw;max-width:760px}
+.circ__eyebrow{color:rgba(238,232,220,.5);letter-spacing:.32em;margin:0 0 28px}
+.circ__h{font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(42px,5.2vw,92px);line-height:1.02;margin:0 0 32px}
+.circ__p{max-width:34em;margin:0 0 30px;opacity:.82}
+.circ__bar{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;align-items:center;gap:26px;padding:12px 14px 12px 28px;background:rgba(12,12,12,.92);border:1px solid rgba(238,232,220,.12);white-space:nowrap}
+.circ__bar .t-caps{opacity:.7;letter-spacing:.24em;font-size:12px}
+.circ__btn{display:inline-block;background:#eee8dc;color:#0a0a0a;padding:16px 28px;text-decoration:none;letter-spacing:.22em;font-size:12px;text-transform:uppercase}
+@media (max-width:820px){
+  .circ{grid-template-columns:1fr}
+  .circ__pic{min-height:48vh}
+  .circ__text{padding:56px 6vw 150px}
+  .circ__bar{left:6vw;right:6vw;transform:none;justify-content:space-between;gap:12px;padding:10px 10px 10px 16px}
+  .circ__bar .t-caps{font-size:10px;white-space:normal;line-height:1.5}
+  .ch{height:200vh}
+  .ch__index{display:none}
+}
+
+/* The sound switch: small, bottom left, off until asked */
+.snd{position:fixed;right:22px;bottom:76px;z-index:60;display:flex;align-items:center;gap:12px;background:rgba(10,10,10,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(238,232,220,.16);color:#eee8dc;padding:10px 16px;font:inherit;font-size:11px;letter-spacing:.26em;text-transform:uppercase;cursor:pointer}
+.snd__bars{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
+.snd__bars i{display:block;width:2px;height:3px;background:currentColor;transition:height .3s}
+.snd[aria-pressed="true"] .snd__bars i{animation:sndbar 1.1s ease-in-out infinite}
+.snd[aria-pressed="true"] .snd__bars i:nth-child(2){animation-delay:.2s}
+.snd[aria-pressed="true"] .snd__bars i:nth-child(3){animation-delay:.4s}
+@keyframes sndbar{0%,100%{height:3px}50%{height:12px}}
+@media (prefers-reduced-motion:reduce){.snd__bars i{animation:none !important}}
+
+/* Version 25: the concierge wall. The heading holds still in the middle; pictures rise past it. */
+.orb{position:relative;height:640vh;background:#0a0a0a;color:#eee8dc}
+.orb__stick{position:sticky;top:0;height:100vh;overflow:hidden}
+.orb__head{opacity:0;position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6vw;pointer-events:none;will-change:opacity,transform}
+.orb__eyebrow{letter-spacing:.32em;color:rgba(238,232,220,.55);margin:0 0 26px}
+.orb__title{font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(34px,5.2vw,96px);line-height:1;letter-spacing:-.015em;margin:0}
+.orb__title em{display:block;font-style:normal;color:rgba(238,232,220,.9)}
+.orb__field{position:absolute;inset:0;z-index:1}
+.orb__it{position:absolute;left:0;top:0;width:var(--w);margin:0;will-change:transform,opacity;transform:translate3d(0,130vh,0);opacity:0;z-index:1}
+.orb__it--front{z-index:1}
+.orb__it img{display:block;width:100%;aspect-ratio:var(--ar);object-fit:cover;filter:brightness(.88) saturate(.9);transition:filter .5s,transform .6s}
+.orb__it:hover img{filter:brightness(1.05) saturate(1);transform:scale(1.02)}
+.orb__cap{margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(238,232,220,.78);line-height:1.5}
+.orb__no{color:rgba(238,232,220,.5);margin-right:6px}
+.orb__desc{display:block;margin-top:4px;font-family:var(--serif,serif);font-size:15px;letter-spacing:0;text-transform:none;color:rgba(238,232,220,.6);opacity:0;max-height:0;overflow:hidden;transition:opacity .4s,max-height .4s}
+.orb__it:hover .orb__desc{opacity:1;max-height:60px}
+.orbout{position:relative;height:300vh;background:#0a0a0a;color:#eee8dc}
+.orbout__stick{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 6vw}
+.orbout__in{max-width:min(1100px,88vw);margin:0 auto;text-align:center}
+.orbout__p{font-family:var(--serif,serif);font-weight:300;font-size:clamp(30px,4vw,70px);line-height:1.18;letter-spacing:-.012em;margin:0 0 5vh;opacity:1}
+.orbout__w{display:inline-block;will-change:transform,opacity}
+.orbout__line{margin:0 0 20px;font-family:var(--serif,serif);font-size:clamp(18px,1.5vw,26px)}
+.orbout__line a{margin-left:8px;color:#eee8dc;border-bottom:1px solid rgba(238,232,220,.4);padding-bottom:2px;text-decoration:none;font-family:var(--sans,sans-serif);font-size:13px;letter-spacing:.08em}
+.orbout__note{color:rgba(238,232,220,.5);letter-spacing:.24em}
+@media (max-width:820px){
+  .orb{height:560vh}
+  .orb__it{width:calc(var(--w) * 1.9)}
+  .orb__cap{font-size:9px;letter-spacing:.14em}
+  .orb__desc{display:none}
+}
+
+@media (max-width:860px){.orbout{height:260vh}.orbout__p{font-size:clamp(28px,7.4vw,44px)}}
+@media (max-width:480px){.circ__btn{display:block;text-align:center;padding:16px 12px;letter-spacing:.16em;max-width:100%;box-sizing:border-box}}

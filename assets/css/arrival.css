@@ -1,0 +1,76 @@
+/* ---------- Arrival, a sideways journey (version 7) ----------
+   After era-residence.com ("New Golden Mile" and "The coast you wanted"), set in the dark.
+   Default (no script, reduced motion): the title, then each line with its picture, one under the other.
+   With .ar--live the stage sticks and the track travels sideways as you scroll. */
+.ar { position: relative; padding: 110px 0 40px; background: var(--bg); }
+.ar__stick { position: relative; padding: 0 var(--gut); }
+.ar__track { display: grid; gap: 56px; }
+.ar__intro { display: grid; gap: 24px; }
+.ar__hero, .ar__card { margin: 0; overflow: hidden; background: var(--bg-2); }
+.ar__hero { aspect-ratio: 4 / 5; }
+.ar__card { aspect-ratio: var(--ar, 4 / 3); }
+.ar__hero img, .ar__card img { width: 100%; height: 100%; object-fit: cover; }
+.ar__h { font-family: var(--serif); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.98; font-size: clamp(40px, 11vw, 72px); }
+.ar__first { max-width: 34ch; color: var(--fg-80); margin-top: 18px; }
+.ar__stop { display: grid; gap: 16px; }
+.ar__no { color: var(--gold); }
+.ar__line { font-family: var(--serif); font-size: clamp(28px, 7vw, 44px); line-height: 1.08; }
+.ar__a { margin-top: 20px; }
+
+.ar--live { padding: 0; }
+.ar--live .ar__stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; padding: 0; background: var(--bg); }
+.ar--live .ar__track { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: stretch; gap: 0; will-change: transform; }
+
+/* the opening: the title stacked large over the villa, like "New Golden Mile" */
+.ar--live .ar__intro { position: relative; flex: none; width: 74vw; height: 100%; display: block; }
+.ar--live .ar__hero { position: absolute; left: 30vw; top: 11vh; width: 30vw; height: 78vh; aspect-ratio: auto; z-index: 1; }
+.ar--live .ar__hero img { transform: scale(1.12); will-change: transform; }
+.ar--live .ar__lead { position: absolute; z-index: 2; left: var(--gut); top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+.ar--live .ar__h { max-width: 7.5em; font-size: clamp(44px, min(7.2vw, 12.4vh), 132px); line-height: 0.94; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35); }
+.ar--live .ar__first { position: relative; margin-top: 4.5vh; max-width: 30ch; font-size: clamp(16px, min(1.45vw, 2.6vh), 21px); }
+
+/* each stop: a picture at its own height, the line beneath it */
+.ar--live .ar__stop { position: relative; flex: none; display: block; z-index: 1; width: calc(var(--w) * 1vw); margin-right: 14vw; padding-top: var(--top); }
+.ar--live .ar__stop:first-of-type { margin-left: 4vw; }
+.ar--live .ar__card { width: 100%; aspect-ratio: var(--ar); max-height: 52vh; }
+.ar--live .ar__card img { transform: scale(1.18); will-change: transform; }
+.ar--live .ar__say { position: relative; padding: 3.2vh 0 0; }
+.ar--live .ar__no { margin-bottom: 1.4vh; }
+.ar--live .ar__line { font-size: clamp(24px, min(2.3vw, 4.4vh), 44px); max-width: 13em; }
+.ar--live .ar__end { flex: none; width: 10vw; }
+
+@media (max-width: 767px) {
+    .ar--live .ar__intro { width: 100vw; }
+    .ar--live .ar__hero { left: 34vw; top: 14vh; width: 60vw; height: 52vh; }
+    .ar--live .ar__lead { right: var(--gut); justify-content: flex-end; padding-bottom: 12vh; }
+    .ar--live .ar__h { font-size: clamp(38px, min(12vw, 8vh), 64px); }
+    .ar--live .ar__first { font-size: 16px; }
+    .ar--live .ar__stop { width: calc(var(--w) * 2.5vw); max-width: 78vw; margin-right: 16vw; padding-top: calc(var(--top) * 0.6 + 6vh); }
+    .ar--live .ar__card { max-height: 44vh; }
+    .ar--live .ar__line { font-size: clamp(24px, 7.4vw, 34px); }
+}
+
+/* ---------- Version 11: no objects; the words and the pictures larger ---------- */
+@media (min-width: 768px) {
+    /* the opening: the villa taller and wider, the title and its line larger */
+    .ar--live .ar__intro { width: 84vw; }
+    .ar--live .ar__hero { left: 33vw; top: 8vh; width: 36vw; height: 84vh; }
+    .ar--live .ar__h { font-size: clamp(44px, min(7.2vw, 12.4vh), 132px); max-width: 7.5em; }   /* the title is back at its original size */
+    .ar--live .ar__first { font-size: clamp(18px, min(1.85vw, 3.4vh), 27px); max-width: 28ch; margin-top: 4vh; }
+
+    /* each stop: a bigger picture and a bigger line */
+    .ar--live .ar__stop { width: calc(var(--w) * 1.32vw); margin-right: 9vw; padding-top: calc(var(--top) * 0.45 + 5.5vh); }
+    .ar--live .ar__card { max-height: 57vh; }
+    .ar--live .ar__no { font-size: 13px; margin-bottom: 1.6vh; }
+    .ar--live .ar__line { font-size: clamp(30px, min(3.3vw, 6.2vh), 62px); max-width: 12em; line-height: 1.06; }
+    .ar--live .ar__say { padding-top: 3vh; }
+    .ar--live .dwlink.ar__a { font-size: 13.5px; margin-top: 3vh; }
+}
+@media (max-width: 767px) {
+    .ar--live .ar__hero { left: 28vw; top: 10vh; width: 68vw; height: 58vh; }
+    .ar--live .ar__h { font-size: clamp(42px, min(14vw, 9vh), 72px); }
+    .ar--live .ar__first { font-size: 18px; }
+    .ar--live .ar__stop { width: calc(var(--w) * 3vw); max-width: 84vw; margin-right: 14vw; }
+    .ar--live .ar__card { max-height: 48vh; }
+    .ar--live .ar__line { font-size: clamp(28px, 8.6vw, 40px); }
+}

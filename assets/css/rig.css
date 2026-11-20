@@ -1,0 +1,31 @@
+/* Version 31: cars, yachts and jets. One pinned screen, three films, a loader line under each name. */
+.rig{position:relative;height:420vh;background:#050505;color:#eee8dc}
+.rig__stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.rig__slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;will-change:opacity}
+.rig__slide.is-on{opacity:1;z-index:1}
+.rig__film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 6s cubic-bezier(.2,.6,.2,1);filter:brightness(.78) saturate(.92)}
+.rig__slide.is-on .rig__film{transform:scale(1)}
+.rig__shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(5,5,5,.5) 0%,rgba(5,5,5,0) 28%,rgba(5,5,5,0) 45%,rgba(5,5,5,.82) 100%)}
+.rig__label{position:absolute;z-index:3;left:var(--gut,4vw);top:13vh;margin:0;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(238,232,220,.72)}
+.rig__copy{position:absolute;z-index:3;left:var(--gut,4vw);right:var(--gut,4vw);bottom:24vh;height:34vh}
+.rig__txt{position:absolute;left:0;bottom:0;max-width:min(62vw,900px);opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.rig__txt.is-on{opacity:1;transform:none;transition-delay:.35s}
+.rig__title{margin:0 0 2.2vh;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(40px,6.2vw,112px);line-height:1;letter-spacing:-.015em}
+.rig__title span{display:block}
+.rig__title em{font-style:italic}
+.rig__p{margin:0;max-width:34em;font-size:clamp(14px,1.05vw,18px);line-height:1.7;color:rgba(238,232,220,.78)}
+.rig__bar{position:absolute;z-index:4;left:var(--gut,4vw);right:var(--gut,4vw);bottom:5vh;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw}
+.rig__btn{display:grid;grid-template-columns:1fr;column-gap:0;row-gap:4px;width:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.rig__line{grid-column:1 / -1;position:relative;display:block;height:2px;margin-bottom:14px;background:rgba(238,232,220,.28);overflow:hidden}
+.rig__line i{position:absolute;inset:0;background:#eee8dc;transform:scaleX(0);transform-origin:0 50%}
+.rig__no{font-size:12px;letter-spacing:.2em;color:rgba(238,232,220,.6)}
+.rig__name{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:rgba(238,232,220,.6);transition:color .4s}
+.rig__sub{grid-column:1;font-size:12px;color:rgba(238,232,220,.45)}
+.rig__col.is-on .rig__name,.rig__col.is-on .rig__no{color:#eee8dc}
+@media (max-width:760px){
+  .rig{height:360vh}
+  .rig__copy{bottom:27vh}.rig__txt{max-width:100%}
+  .rig__sub{display:none}
+  .rig__name{font-size:11px;letter-spacing:.14em}
+}
+@media (prefers-reduced-motion:reduce){.rig__slide,.rig__txt,.rig__film{transition:none}}

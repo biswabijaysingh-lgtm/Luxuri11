@@ -1,0 +1,136 @@
+/* Version 27: the arrival, built the way normalisboring.es builds its scroll module, in the dark. */
+.xs{position:relative;background:#0a0a0a;color:#eee8dc;height:var(--xs-h,720vh)}
+.xs__stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.xs__row{display:flex;height:100%;width:max-content;will-change:transform}
+.xp{position:relative;flex:none;height:100%}
+.xs em{font-style:italic;text-transform:none}
+
+/* 1. the title: three little blocks, letters rising out of masks */
+.xp--intro{width:80vw}
+.xi__title{position:absolute;left:0;top:0;width:100vw;height:100%;margin:0;font-weight:300}
+.xi__g{position:absolute;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(34px,6.4vw,118px);line-height:1;letter-spacing:-.01em;text-transform:uppercase}
+.xi__g--1{left:7vw;top:15vh}
+.xi__g--2{left:7vw;top:15vh;margin-top:1.18em}
+.xi__g--3{left:7vw;top:15vh;margin-top:2.36em}
+.xl{display:block;overflow:hidden;padding:.05em .05em .14em 0;white-space:nowrap}
+.xl .xch{display:inline-block;will-change:transform}
+.xi__text{position:absolute;left:7vw;bottom:9vh;width:30vw;font-size:clamp(13px,.95vw,17px);line-height:1.75;color:rgba(238,232,220,.72)}
+.xi__text p{margin:0}
+.xln{display:block;overflow:hidden}
+.xln > span{display:block}
+.xi__sec{position:absolute;left:2vw;top:50vh;margin:0;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(238,232,220,.5)}
+.xi__copy{position:absolute;left:2vw;bottom:4vh;margin:0;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(238,232,220,.45)}
+.xi__menu{position:absolute;left:93vw;top:8vh;margin:0;padding:0;list-style:none;display:flex;flex-direction:row-reverse;gap:1.2vw;z-index:3}
+.xi__menu a{display:block;writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(238,232,220,.7);text-decoration:none}
+
+/* two-layer pictures: the top one wipes or slides away to show the one beneath */
+.xflip{position:absolute;overflow:hidden}
+.xflip__down,.xflip__up{position:absolute;inset:0;overflow:hidden}
+.xflip__up{z-index:2}
+.xflip img,.xflip video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.9) saturate(.92)}
+.xv{background:#0b0b0b}
+.xm{margin:0;overflow:hidden}
+
+/* 2. the big picture and the little one that flips */
+.xp--img1{width:106vw}
+.xm--single{position:absolute;left:0;top:0;width:64vw;height:100%}
+.xm--single img,.xm--single video{position:absolute;left:0;top:0;width:calc(100% + 15vw);height:100%;object-fit:cover;filter:brightness(.88)}
+.xflip--a{left:50vw;top:30vh;width:34vw;height:54vh}
+
+/* 3. the statement: four lines, the last one slides across */
+.xp--text{width:118vw}
+.xt__sec{position:absolute;left:4vw;top:13vh;margin:0;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(238,232,220,.5)}
+.xt__wrap{position:absolute;left:4vw;top:19vh;width:70vw}
+.xt__title{margin:0;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(40px,8vw,150px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.xt__title .line{display:block;position:relative;white-space:nowrap}
+.xt__title .line:nth-child(2){padding-left:12vw}
+.xt__title .line:nth-child(3){padding-left:3vw}
+.xt__title .line:nth-child(4){text-align:right}
+.xt__title .cont{position:relative;display:inline-block;left:0}
+.xt__p{width:28vw;margin:6vh 0 0 6vw;font-size:clamp(13px,.95vw,17px);line-height:1.75;color:rgba(238,232,220,.7)}
+
+/* 4. the black panel: two flips and a paragraph that lights line by line */
+.xp--it{width:150vw;background:#000}
+.xflip--b{left:6vw;top:8vh;width:26vw;height:84vh}
+.xflip--c{left:36vw;top:46vh;width:30vw;height:46vh}
+.xit__text{position:absolute;left:74vw;top:20vh;width:44vw;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(22px,2.4vw,44px);line-height:1.25}
+.xit__text p{margin:0}
+
+/* 5. the strip of type that climbs */
+.xp--car{width:15vw;margin:0 2vw;background:#eee8dc;color:#0a0a0a;overflow:hidden}
+.xc__in{display:flex;flex-direction:column;align-items:center;gap:2.2vw;padding-top:2vw;will-change:transform}
+.xc__in span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--serif,serif);font-weight:300;font-size:clamp(46px,7vw,130px);line-height:1;text-transform:uppercase;white-space:nowrap}
+.xc__in i{font-style:normal;font-size:clamp(30px,4vw,70px);line-height:1}
+
+/* 6. two more flips */
+.xp--img2{width:125vw}
+.xflip--d{left:4vw;top:7vh;width:36vw;height:58vh}
+.xflip--e{left:54vw;top:26vh;width:30vw;height:66vh}
+
+/* 7. the giant words, drifting, with a picture under the cursor */
+.xp--terms{width:140vw;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(rgba(10,2,3,.28),rgba(10,2,3,.38)),url('../media/wine-room.jpg') center/cover no-repeat #2a0709;color:#f1e6dc;padding:0 4vw;gap:2vh}
+.xterm{position:relative;display:grid;grid-template-columns:3vw auto;column-gap:1vw;align-items:end;transition:opacity .45s}
+.xterm__no{grid-row:1;align-self:start;margin:1.4vw 0 0;font-family:var(--serif,serif);font-style:italic;font-size:clamp(13px,1.1vw,19px);color:rgba(238,232,220,.55)}
+.xterm__w{grid-column:2;margin:0;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(54px,12vw,230px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.xterm__t{grid-column:2;margin:.4vh 0 0;max-width:36vw;font-size:clamp(12px,.9vw,16px);line-height:1.6;color:rgba(238,232,220,.62)}
+.xterm__inline{display:none}
+.xterm--2{justify-self:end;text-align:left}
+.xp--terms.has-hover .xterm{opacity:.3}
+.xp--terms.has-hover .xterm.is-on{opacity:1}
+.xterm.is-on .xterm__w{font-style:italic;transform:translateX(1.5vw)}
+.xs__follow{position:absolute;left:0;top:0;width:clamp(200px,24vw,430px);aspect-ratio:4 / 3;pointer-events:none;z-index:6;opacity:0;transition:opacity .35s;will-change:transform}
+.xs__follow.is-on{opacity:1}
+.xs__follow .sw{position:absolute;inset:0}
+.xs__follow .sw i{position:absolute;top:0;bottom:0;background-repeat:no-repeat;transform-origin:50% 0}
+
+/* 8. the cards: narrow, then they widen as they arrive and their words come in */
+.xp--proj{width:190vw;display:flex;align-items:flex-start;padding:6vh 0 0 3vw}
+.xcard{flex:none;width:15vw;margin-right:2.5vw}
+.xcard__media{overflow:hidden;height:87vh;width:100%}
+.xcard__media img,.xcard__media video{display:block;width:100%;height:100%;object-fit:cover;filter:brightness(.9)}
+.xcard__text{margin-top:2vh;overflow:hidden}
+.xcard__data{display:flex;justify-content:space-between;margin:0 0 1vh;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(238,232,220,.6)}
+.xcard__data > span{display:block;overflow:hidden}
+.xcard__data > span > span{display:block}
+.xcard__title{margin:0 0 1.4vh;font-family:var(--serif,'Cormorant Garamond',serif);font-weight:300;font-size:clamp(34px,4.4vw,80px);line-height:1;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+.xcard__title .xch{display:inline-block}
+.xcard__btn{display:inline-block;border:1px solid rgba(238,232,220,.4);color:#eee8dc;padding:12px 26px;border-radius:999px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.xp--end{width:30vw}
+
+/* narrow screens and touch: the panels simply stack */
+@media (max-width:900px),(pointer:coarse){
+  .xs{height:auto}
+  .xs__stage{position:static;height:auto;overflow:visible}
+  .xs__row{display:block;width:auto;height:auto;transform:none !important}
+  .xp{width:auto !important;height:auto;padding:34px 6vw;overflow:visible}
+  .xp--intro{padding-top:90px}
+  .xi__title,.xi__g,.xi__sec,.xi__copy,.xi__text,.xi__menu,.xt__sec,.xt__wrap,.xit__text{position:relative;left:auto;top:auto;bottom:auto;width:auto;height:auto}
+  .xi__g,.xi__g--2,.xi__g--3{font-size:clamp(36px,11vw,70px);margin:0 0 10px}
+  .xi__menu{display:none}
+  .xi__text{margin:20px 0}
+  .xm--single,.xflip{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:4 / 3;margin:0 0 18px}
+  .xm--single img,.xm--single video{position:relative;width:100%;height:100%;transform:none !important}
+  .xflip__down{position:relative;inset:auto;height:100%}
+  .xflip__up{display:none}
+  .xt__title{font-size:clamp(38px,11vw,80px)}
+  .xt__title .line,.xt__title .line:nth-child(n){padding-left:0;text-align:left}
+  .xt__p{width:auto;margin:20px 0 0}
+  .xp--it{background:#000}
+  .xit__text{font-size:clamp(22px,6vw,34px);margin-top:18px}
+  .xp--car{height:90px;margin:20px 0;padding:0;overflow:hidden !important}
+  .xc__in{flex-direction:row;height:100%;align-items:center;width:max-content;padding:0;gap:6vw;animation:xsx 30s linear infinite}
+  .xc__in span{writing-mode:horizontal-tb;transform:none;font-size:44px}
+  @keyframes xsx{to{transform:translateX(-50%)}}
+  .xp--terms{display:block}
+  .xterm{display:block;margin-bottom:34px;padding:0 !important}
+  .xterm__w{font-size:clamp(46px,16vw,100px)}
+  .xterm__t{max-width:none}
+  .xterm__inline{display:block;width:100%;aspect-ratio:16 / 10;object-fit:cover;margin-top:12px}
+  .xs__follow{display:none}
+  .xp--proj{display:block;width:auto !important;padding:34px 6vw}
+  .xcard{width:100% !important;margin:0 0 34px}
+  .xcard__media{height:auto}
+  .xcard__media img,.xcard__media video{aspect-ratio:4 / 3;height:auto}
+  .xp--end{display:none}
+}
+@media (prefers-reduced-motion:reduce){.xc__in{animation:none}}
